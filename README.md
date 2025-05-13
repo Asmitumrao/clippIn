@@ -4,7 +4,7 @@
 A web application that allows students to choose their lunch and dinner options in advance and generates a QR code coupon. The QR code can be shown to the mess organizer to claim the selected meal.
 
 
-🚀 **Live Demo**: [Click here to check out Clipp-In](https://vercel.com/asmit-umraos-projects/clipp-in/4Ybr7AriX3zi4z7L17XKhFuvZwGv)
+🚀 **Live Demo**: [Click here to check out Clipp-In](https://clipp-in.vercel.app/)
 
 ---
 
