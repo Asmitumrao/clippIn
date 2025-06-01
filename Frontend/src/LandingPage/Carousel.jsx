@@ -123,7 +123,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 py-12">
+    <div className="max-w-[1600px] mx-auto px-4 ">
       {/* Header */}
       <div className="text-center mb-15">
         <p className="text-orange-500 font-medium">Popular Delivery</p>
