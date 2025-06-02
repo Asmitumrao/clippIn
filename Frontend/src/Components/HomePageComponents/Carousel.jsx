@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState(3);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isAnimating,   setIsAnimating] = useState(false);
   
   const foodItems = [
     {
@@ -123,7 +123,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 ">
+    <div className="max-w-[1600px] mx-auto px-4 mb-30 ">
       {/* Header */}
       <div className="text-center mb-15">
         <p className="text-orange-500 font-medium">Popular Delivery</p>
@@ -135,7 +135,7 @@ export default function Carousel() {
       </div>
 
       {/* Carousel */}
-      <div className="relative h-90">
+      <div className="relative h-80 w-80">
         <div className="absolute inset-0 flex justify-center items-center">
           {foodItems.map((item, index) => (
             <div
@@ -144,7 +144,7 @@ export default function Carousel() {
                 index
               )}`}
             >
-              <div className="relative w-80 h-80 bg-white rounded-2xl overflow-hidden">
+              <div className="relative w-full  bg-white rounded-2xl overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -164,31 +164,33 @@ export default function Carousel() {
 {/* Navigation Buttons */}
 <button
   onClick={prevSlide}
-  className="absolute right-130 top-1/2 -translate-y-1/2 z-50 bg-white rounded-full p-2 shadow-md hover:bg-orange-500"
+  className="absolute right-140 top-1/2 -translate-y-1/2 z-50 bg-white rounded-full p-2 shadow-md hover:bg-orange-500"
   aria-label="Previous slide"
 >
   <ChevronLeft size={24} />
 </button>
 <button
   onClick={nextSlide}
-  className="absolute left-130 top-1/2 -translate-y-1/2 z-50 bg-white rounded-full p-2 shadow-md hover:bg-orange-500"
+  className="absolute left-140 top-1/2 -translate-y-1/2 z-50 bg-white rounded-full p-2 shadow-md hover:bg-orange-500"
   aria-label="Next slide"
 >
   <ChevronRight size={24} />
 </button>
 
 {/* Indicators */}
-<div className="mt-2 flex justify-center space-x-1 ">
-  {foodItems.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => goToSlide(index)}
-      className={`h-2 rounded-full transition-all duration-300 mt-5 ${
-        index === activeIndex ? "w-6 bg-orange-500" : "w-2 bg-gray-300"
-      }`}
-      aria-label={`Go to slide ${index + 1}`}
-    />
-  ))}
+<div className="absolute top-90 w-full flex justify-around">
+  <div className="flex justify-around space-x-1 ">
+    {foodItems.map((_, index) => (
+      <button
+        key={index}
+        onClick={() => goToSlide(index)}
+        className={`h-2 rounded-full transition-all duration-300 mt-5 ${
+          index === activeIndex ? "w-6 bg-orange-500" : "w-2 bg-gray-300"
+        }`}
+        aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+  </div>
 </div>
 
       </div>

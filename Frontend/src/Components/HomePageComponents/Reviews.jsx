@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
+
 const HoverCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
@@ -87,7 +88,7 @@ const Reviews = () => {
 
     const images = ['https://picsum.photos/1000/500','https://picsum.photos/500/500','https://picsum.photos/600/600']
   return (
-    <div className='flex flex-row  mx-auto justify-center items-center gap-10 overflow-hidden p-6'>   
+    <div className='flex flex-row  mx-auto justify-center items-center gap-10 overflow-hidden p-6 mb-30'>   
         <div className='h-100 w-100 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4'>
             <div className='col-span-2 w-full h-full rounded-lg shadow-lg bg-gray-200'>
                 <img src={images[0]} alt="" className="object-cover rounded-lg shadow-lg h-full w-full" />
@@ -100,16 +101,24 @@ const Reviews = () => {
             <img src={images[2]} alt="" className="object-cover rounded-lg shadow-lg h-full w-full" />
             </div>
         </div>
-        <div className='flex flex-col items-center justify-center h-100 w-100 bg-gray-200 rounded-lg shadow-lg p-4'>
-            <div className='flex flex-col justify-center h-[30%] w-100 bg-gray-200 font-bold text-2xl px-4'>
-            <h1 className='text-amber-300 text-lg'>What they say </h1>
-            <h1>What Our Customers Say</h1>
-            <h1>About Us</h1>
-            </div>
-            <div className='flex flex-col justify-center h-[70%] font-bold text-2xl p-4'>
+        <div className=' h-100 w-100 '>
+            <div className='flex flex-col items-start justify-center h-96 w-full bg-gray-100 rounded-xl shadow-sm p-8 border border-gray-100'>
+              {/* Header */}
+              <div className='flex flex-col justify-center mb-8'>
+                <h2 className='text-amber-300 text-lg  font-bold mb-2'>What they say</h2>
+                <h1 className='text-3xl font-bold text-gray-900 leading-tight'>
+                  What Our Customers Say<br />
+                  <span className='text-gray-700'>About Us</span>
+                </h1>
+              </div>
+
+              {/* Carousel */}
+              <div className='flex-1 w-full'>
                 <HoverCarousel/>
+              </div>
             </div>
-        </div>
+          </div>
+        
     </div>
   )
 }

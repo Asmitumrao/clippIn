@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [cartItems, setCartItems] = useState(0);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -14,6 +17,13 @@ function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const navbarLinks = [
+    { name: 'Home', link: '/' },
+    { name: 'Menu', link: '/menu' },
+    { name: 'DashBoard', link: '/dashboard' },
+    { name: 'About', link: '/about' },
+  ];
 
   return (
     <nav className="bg-white shadow-md py-4 px-6">
@@ -39,22 +49,17 @@ function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             {/* Navigation Links */}
             <div className="flex items-center space-x-6">
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                Home
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                Menu
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                How it Works
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                About
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              {navbarLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.link}
+                  className="text-gray-700 hover:text-black-800 font-medium relative group"
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ))}
+              
             </div>
 
             {/* Search Form */}
@@ -76,12 +81,14 @@ function Navbar() {
             </form>
 
             {/* Cart Icon */}
+            <Link to="/cart" className="relative cursor-pointer text-gray-700 hover:text-[#F8B500]">
             <div className="relative cursor-pointer text-gray-700 hover:text-[#F8B500]">
               <FiShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1.5 rounded-full">
-                0
+                {cartItems}
               </span>
             </div>
+            </Link>
 
             {/* Sign Up Button */}
             <button className="flex items-center bg-[#F8B500] text-white px-4 py-1.5 rounded-full hover:bg-[#F8B500] transition">
@@ -95,23 +102,16 @@ function Navbar() {
         {isOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                Menu
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                How it Works
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-black-800 font-medium relative group py-2">
-                About
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              
+              {/* Navigation Links */}
+              {navbarLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.link}  
+                className="text-gray-700 hover:text-black-800 font-medium relative group py-2"
+              > {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>   
+              </Link>
+              ))}
               {/* Mobile Search */}
               <form onSubmit={handleSearch} className="flex items-center space-x-2">
                 <input
@@ -134,7 +134,7 @@ function Navbar() {
                 <div className="relative cursor-pointer text-gray-700 hover:text-[#F8B500]">
                   <FiShoppingCart size={24} />
                   <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1.5 rounded-full">
-                    3
+                    {cartItems}
                   </span>
                 </div>
 

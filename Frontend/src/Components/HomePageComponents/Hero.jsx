@@ -1,8 +1,8 @@
 import React from 'react';
-import item from '../assets/food.png';
+import item from '../../assets/food.png';
 export default function Hero() {
   return (
-    <div className="bg-white w-full max-w-6xl mx-auto pt-20 px-4 md:px-8">
+    <div className="bg-white w-full max-w-6xl mx-auto pt-20 px-4 md:px-8 my-4">
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
         <div className="md:w-1/2 space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">

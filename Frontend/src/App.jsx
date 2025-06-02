@@ -1,20 +1,28 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Cart from './pages/Cart';
+import Dashboard from './pages/Dashboard';
+import Menu from './pages/Menu';
+import About from './pages/About';
 import Navbar from './Components/Navbar';
-import Hero from './Components/Hero';
 import Footer from './Components/Footer';
-import Reviews from './Components/Reviews';
-import Carousel from './LandingPage/Carousel'
-import Cards from './Components/Cards';
+
 
 function App() {
   return (
-    <div className='grid grid-cols gap-20'>
-      <Navbar/>
-      <Hero/>
-      <Cards/>
-      <Carousel/>
-      <Reviews/>
-      <Footer/>
+    <div >
+      <Navbar />
+      {/* Define your routes here */}
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/menu" element={<Menu/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/cart" element={<Cart/>} />
+        {/* Add more routes as needed */}
+      </Routes>
+      <Footer />
     </div>
   );
 }
